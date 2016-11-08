@@ -17,29 +17,17 @@ ActiveRecord::Schema.define(version: 20161019220727) do
 
   create_table "screenshots", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "video_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_screenshots_on_user_id", using: :btree
-    t.index ["video_id"], name: "index_screenshots_on_video_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
     t.text     "email"
-    t.text     "password"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "videos", force: :cascade do |t|
-    t.text     "url"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_videos_on_user_id", using: :btree
+    t.text     "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   add_foreign_key "screenshots", "users"
-  add_foreign_key "screenshots", "videos"
-  add_foreign_key "videos", "users"
 end
