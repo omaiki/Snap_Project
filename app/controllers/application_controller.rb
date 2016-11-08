@@ -16,4 +16,11 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
 
+#ensure user is logged in before actions
+
+# before_filter :authorize only: [:edit, :update]
+  def authorize
+    redirect_to login_url, alert: "Not Authorized" if current_user.nil?
+  end
+
 end
