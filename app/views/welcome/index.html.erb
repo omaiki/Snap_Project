@@ -1,2 +1,109 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<!DOCTYPE html>
+<!--  This site was created in Webflow. http://www.webflow.com -->
+<!--  Last Published: Wed Nov 09 2016 06:57:34 GMT+0000 (UTC)  -->
+<html data-wf-page="5806f1bde089c39014b39e8d" data-wf-site="5806f1bde089c39014b39e8c">
+<head>
+  <meta charset="utf-8">
+  <title>YoutubeScreenshotSite</title>
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta content="Webflow" name="generator">
+  <link href="css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="css/webflow.css" rel="stylesheet" type="text/css">
+  <link href="css/youtubescreenshotsite.webflow.css" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
+  <script type="text/javascript">
+    WebFont.load({
+      google: {
+        families: ["Ubuntu:300,300italic,400,400italic,500,500italic,700,700italic"]
+      }
+    });
+  </script>
+  <script src="js/modernizr.js" type="text/javascript"></script>
+  <link href="https://daks2k3a4ib2z.cloudfront.net/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+  <link href="https://daks2k3a4ib2z.cloudfront.net/img/webclip.png" rel="apple-touch-icon">
+</head>
+<body class="body">
+  <div class="nav-bar w-nav" data-animation="default" data-collapse="medium" data-contain="1" data-duration="400">
+    <div class="w-container">
+      <nav class="w-nav-menu" role="navigation"><a class="nav-link w-nav-link" href="index.html">Home</a><a class="nav-link w-nav-link" href="profile-page.html">Profile</a>
+      </nav>
+      <div class="w-nav-button">
+        <div class="w-icon-nav-menu"></div>
+      </div>
+    </div>
+  </div>
+  <div class="w-container">
+    <h1 class="title">YouTube<br>Snapshot</h1>
+    <div class="form-wrapper w-form">
+      <form class="w-clearfix" data-name="Email Form" id="email-form" name="email-form">
+        <input class="search-bar w-input" id="field" maxlength="256" name="field" placeholder="Paste YouTube Link Here" required="required" type="text"><a class="search-button w-button" href="watch-video.html">Submit</a>
+      </form>
+      <div class="w-form-done">
+        <div>Thank you! Your submission has been received!</div>
+      </div>
+      <div class="w-form-fail">
+        <div>Oops! Something went wrong while submitting the form</div>
+      </div>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js" type="text/javascript"></script>
+  <script src="js/webflow.js" type="text/javascript"></script>
+  <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
+  <script>
+    //get video source
+    videos = document.querySelectorAll("video");
+    for (var i = 0, l = videos.length; i < l; i++) {
+       var video = videos[i];
+       var src = video.src || (function () {
+           var sources = video.querySelectorAll("source");
+           for (var j = 0, sl = sources.length; j < sl; j++) {
+               var source = sources[j];
+               var type = source.type;
+               var isMp4 = type.indexOf("mp4") != -1;
+               if (isMp4) return source.src;
+           }
+           return null;
+       })();
+       if (src) {
+           var isYoutube = src && src.match(/(?:youtu|youtube)(?:\.com|\.be)\/([\w\W]+)/i);
+           if (isYoutube) {
+               var id = isYoutube[1].match(/watch\?v=|[\w\W]+/gi);
+               id = (id.length > 1) ? id.splice(1) : id;
+               id = id.toString();
+               var mp4url = "http://www.youtubeinmp4.com/redirect.php?video=";
+               video.src = mp4url + id;
+           }
+       }
+    }
+    var videoId = 'video';
+    var scaleFactor = 0.5;
+    var snapshots = [];
+    function capture(video, scaleFactor) {
+      if(scaleFactor == null){
+        scaleFactor = 1;
+      }
+      var w = video.videoWidth * scaleFactor;
+      var h = video.videoHeight * scaleFactor;
+      var canvas = document.createElement('canvas');
+        canvas.width  = w;
+          canvas.height = h;
+      var ctx = canvas.getContext('2d');
+        ctx.drawImage(video, 0, 0, w, h);
+        return canvas;
+    }
+    function shoot() {
+      var video  = document.getElementById(videoId);
+      var output = document.getElementById('output');
+      var canvas = capture(video, scaleFactor);
+        canvas.onclick = function(){
+          window.open(this.toDataURL());
+        };
+      snapshots.unshift(canvas);
+      output.innerHTML = '';
+      for(var i=0; i<4; i++){
+        output.appendChild(snapshots[i]);
+      }
+    }
+  </script>
+</body>
+</html>
