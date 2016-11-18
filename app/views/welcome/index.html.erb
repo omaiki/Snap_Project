@@ -55,30 +55,47 @@ body {
 <script>
 
 console.clear();
-videos = document.querySelectorAll("video");
-for (var i = 0, l = videos.length; i < l; i++) {
-    var video = videos[i];
-    var src = video.src || (function () {
-        var sources = video.querySelectorAll("source");
-        for (var j = 0, sl = sources.length; j < sl; j++) {
-            var source = sources[j];
-            var type = source.type;
-            var isMp4 = type.indexOf("mp4") != -1;
-            if (isMp4) return source.src;
+var youtubeLink;
+var vidID;
+
+var video = document.getElementById('video');
+var source = document.createElement('source');
+
+function getUserLink() {
+    var x;
+    x = document.getElementById("form1");
+    youtubeLink = x.elements["userInput"].value;
+
+
+    var mp4url = "http://www.youtubeinmp4.com/redirect.php?video=";
+
+
+
+       var isYoutube = youtubeLink && youtubeLink.match(/(?:youtu|youtube)(?:\.com|\.be)\/([\w\W]+)/i);
+
+       if (isYoutube) {
+           var id = isYoutube[1].match(/watch\?v=|[\w\W]+/gi);
+           id = (id.length > 1) ? id.splice(1) : id;
+           id = id.toString();
+           vidID = id;
         }
-        return null;
-    })();
-    if (src) {
-        var isYoutube = src && src.match(/(?:youtu|youtube)(?:\.com|\.be)\/([\w\W]+)/i);
-        if (isYoutube) {
-            var id = isYoutube[1].match(/watch\?v=|[\w\W]+/gi);
-            id = (id.length > 1) ? id.splice(1) : id;
-            id = id.toString();
-            var mp4url = "http://www.youtubeinmp4.com/redirect.php?video=";
-            video.src = mp4url + id;
-        }
-    }
-}
+
+
+//    document.write(mp4url + youtubeLink);
+//    var newVid = mp4url+youtubeLink;
+
+
+//
+    source.setAttribute('src', mp4url+vidID);
+    video.appendChild(source);
+    video.load();
+
+
+
+
+
+
+} //END getUserLink()
 
 </script>
 
