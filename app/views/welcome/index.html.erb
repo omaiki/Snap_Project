@@ -2,127 +2,60 @@
 
 
 <body>
-<form id = "form1">
-Enter Link: <input type="text" name="userInput">
-<input type="button" onclick="getUserLink()" value ="search">
-</form>
-<!--<button onclick="getUserLink()">rawz</button>-->
+
+    <form id = "form1">
+    Enter Link: <input type="text" name="userInput">
+    <input type="button" onclick="getUserLink()" value ="Search">
+    </form>
+    <!--<button onclick="getUserLink()">rawz</button>-->
 
 
 
-<video id = "video" width="768" height="432" controls= true>
+    <video id = "video" width="768" height="432" controls= true>
 
-</video>
-
-
-<button onclick="shoot()" style="width: 64px;border: solid 2px #ccc;">Capture</button><br/>
-
-<div id="output" style="display: inline-block; top: 4px; position: relative ;border: dotted 1px #ccc; padding: 2px;"></div>
+    </video>
 
 
-<!-- The overlay -->
-<div id="myNav" class="overlay">
+    <button onclick="shoot()" style="width: 64px;border: solid 2px #ccc;">Capture</button><br/>
 
-  <!-- Button to close the overlay navigation -->
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <canvas id="test">
+    <div id="output" style="display: inline-block; top: 4px; position: relative ;border: dotted 1px #ccc; padding: 2px;"></div>
+    </canvas>
 
-  <!-- Overlay content -->
-  <div class="overlay-content">
-    <a href="#">About</a>
-    <a href="#">Services</a>
-    <a href="#">Clients</a>
-    <a href="#">Contact</a>
-  </div>
-
-</div>
-
-<!-- Use any element to open/show the overlay navigation menu -->
-<span onclick="openNav()">open</span>
 
 </body>
+
 <style>
-
-body {
-text-align: center;
-}
-
-
-/* The Overlay (background) */
-.overlay {
-    /* Height & width depends on how you want to reveal the overlay (see JS below) */
-    height: 100%;
-    width: 0;
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    background-color: rgb(0,0,0); /* Black fallback color */
-    background-color: rgba(0,0,0, 0.9); /* Black w/opacity */
-    overflow-x: hidden; /* Disable horizontal scroll */
-    transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
-}
-
-/* Position the content inside the overlay */
-.overlay-content {
-    position: relative;
-    top: 25%; /* 25% from the top */
-    width: 100%; /* 100% width */
-    text-align: center; /* Centered text/links */
-    margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
-}
-
-/* The navigation links inside the overlay */
-.overlay a {
-    padding: 8px;
-    text-decoration: none;
-    font-size: 36px;
-    color: #818181;
-    display: block; /* Display block instead of inline */
-    transition: 0.3s; /* Transition effects on hover (color) */
-}
-
-/* When you mouse over the navigation links, change their color */
-.overlay a:hover, .overlay a:focus {
-    color: #f1f1f1;
-}
-
-/* Position the close button (top right corner) */
-.overlay .closebtn {
-    position: absolute;
-    top: 20px;
-    right: 45px;
-    font-size: 60px;
-}
-
-/* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
-@media screen and (max-height: 450px) {
-    .overlay a {font-size: 20px}
-    .overlay .closebtn {
-        font-size: 40px;
-        top: 15px;
-        right: 35px;
+    body {
+    text-align: center;
     }
-}
+    /*#output {
+    display: inline-block;
+    top: 4px;
+    position: relative;
+    border: dotted 1px #ccc;
+    padding: 2px;
+    }*/
 </style>
 
 
 <!-- function is converting youtube url to embedded video player using javascript and mp4 download website  -->
 <script>
 
-console.clear();
-var youtubeLink;
-var vidID;
+    console.clear();
+    var youtubeLink;
+    var vidID;
 
-var video = document.getElementById('video');
-var source = document.createElement('source');
+    var video = document.getElementById('video');
+    var source = document.createElement('source');
 
-function getUserLink() {
+    function getUserLink() {
     var x;
-    x = document.getElementById("form1");
-    youtubeLink = x.elements["userInput"].value;
+        x = document.getElementById("form1");
+        youtubeLink = x.elements["userInput"].value;
 
 
-    var mp4url = "http://www.youtubeinmp4.com/redirect.php?video=";
+        var mp4url = "http://www.youtubeinmp4.com/redirect.php?video=";
 
 
 
@@ -135,31 +68,23 @@ function getUserLink() {
            vidID = id;
         }
 
-
-//    document.write(mp4url + youtubeLink);
-//    var newVid = mp4url+youtubeLink;
-
-
-//
-    source.setAttribute('src', mp4url+vidID);
-    video.appendChild(source);
-    video.load();
+    //    document.write(mp4url + youtubeLink);
+    //    var newVid = mp4url+youtubeLink;
 
 
+    //
+        source.setAttribute('src', mp4url+vidID);
+        video.appendChild(source);
+        video.load();
 
-
-
-
-} //END getUserLink()
+    } //END getUserLink()
 
 </script>
 
 
 <script>
 
-var videoId = 'video';
-var scaleFactor = 0.5;
-var snapshots = [];
+
 
 /**
  * Captures a image frame from the provided video element.
@@ -169,7 +94,14 @@ var snapshots = [];
  *
  * @return {Canvas}
  */
-function capture(video, scaleFactor) {
+
+
+    var videoId = 'video';
+    var scaleFactor = 0.5;
+    var snapshots = [];
+
+
+    function capture(video, scaleFactor) {
     if(scaleFactor == null){
         scaleFactor = 1;
     }
@@ -183,10 +115,12 @@ function capture(video, scaleFactor) {
     return canvas;
 }
 
+// creates canvas element
+
 /**
  * Invokes the <code>capture</code> function and attaches the canvas element to the DOM.
  */
-function shoot(){
+    function shoot(){
     var video  = document.getElementById(videoId);
     var output = document.getElementById('output');
     var canvas = capture(video, scaleFactor);
@@ -200,19 +134,10 @@ function shoot(){
     }
 }
 
+// puts video into delegated space on button press --> (snapshot)
 
 </script>
 
-<script>
 
-/* Open when someone clicks on the span element */
-function openNav() {
-    document.getElementById("myNav").style.width = "100%";
-}
 
-/* Close when someone clicks on the "x" symbol inside the overlay */
-function closeNav() {
-    document.getElementById("myNav").style.width = "0%";
-}
 
-</script>
