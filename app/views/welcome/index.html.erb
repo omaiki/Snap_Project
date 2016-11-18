@@ -3,25 +3,23 @@
 
 <body>
 
-    <form id = "form1">
+<form id = "form1">
     Enter Link: <input type="text" name="userInput">
     <input type="button" onclick="getUserLink()" value ="Search">
-    </form>
+</form>
     <!--<button onclick="getUserLink()">rawz</button>-->
 
 
 
-    <video id = "video" width="768" height="432" controls= true>
+<video id = "video" width="768" height="432" controls= true>
 
-    </video>
+</video>
 
 
-    <button onclick="shoot()" style="width: 64px;border: solid 2px #ccc;">Capture</button><br/>
+<button onclick="shoot()" style="width: 64px;border: solid 2px #ccc;">Capture</button><br/>
 
-    <canvas id="test">
-    <div id="output" style="display: inline-block; top: 4px; position: relative ;border: dotted 1px #ccc; padding: 2px;"></div>
-    </canvas>
-
+<div id="output" style="display: inline-block; top: 4px; position: relative ;border: dotted 1px #ccc; padding: 2px;">
+</div>
 
 </body>
 
@@ -42,7 +40,7 @@
 <!-- function is converting youtube url to embedded video player using javascript and mp4 download website  -->
 <script>
 
-    console.clear();
+    // console.clear();
     var youtubeLink;
     var vidID;
 
@@ -115,7 +113,7 @@
     return canvas;
 }
 
-// creates canvas element
+// captures an image frame from video
 
 /**
  * Invokes the <code>capture</code> function and attaches the canvas element to the DOM.
@@ -124,9 +122,10 @@
     var video  = document.getElementById(videoId);
     var output = document.getElementById('output');
     var canvas = capture(video, scaleFactor);
-    //     canvas.onclick = function(){
-    //         window.open(this.toDataURL());
-    //     };
+        canvas.onclick = function(){
+            // window.open(this.toDataURL());
+            console.log(canvas);
+        };
     snapshots.unshift(canvas);
     output.innerHTML = '';
     for(var i=0; i<4; i++){
@@ -134,7 +133,7 @@
     }
 }
 
-// puts video into delegated space on button press --> (snapshot)
+// puts image frame into delegated canvas
 
 </script>
 
