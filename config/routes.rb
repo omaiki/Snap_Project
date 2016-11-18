@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
+  get 'welcome', to: 'welcome#show'
+
   resources :users
   resources :sessions
   resources :screenshots
