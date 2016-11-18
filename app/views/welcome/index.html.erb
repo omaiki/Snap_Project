@@ -50,6 +50,8 @@ body {
 }
 </style>
 
+
+<!-- function is converting youtube url to embedded video player using javascript and mp4 download website  -->
 <script>
 
 console.clear();
@@ -116,15 +118,16 @@ function shoot(){
     var video  = document.getElementById(videoId);
     var output = document.getElementById('output');
     var canvas = capture(video, scaleFactor);
-        canvas.onclick = function(){
-            window.open(this.toDataURL());
-        };
+    //     canvas.onclick = function(){
+    //         window.open(this.toDataURL());
+    //     };
     snapshots.unshift(canvas);
     output.innerHTML = '';
     for(var i=0; i<4; i++){
         output.appendChild(snapshots[i]);
     }
 }
+
 
 </script>
 
