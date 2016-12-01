@@ -1,12 +1,13 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js" type="text/javascript"></script>
 
 
-<body>
+
+
 <form id = "form1">
-Enter Link: <input type="text" name="userInput">
-<input type="button" onclick="getUserLink()" value ="search">
+    Enter Link: <input type="text" name="userInput">
+    <input type="button" onclick="getUserLink()" value ="Search">
 </form>
-<!--<button onclick="getUserLink()">rawz</button>-->
+    <!--<button onclick="getUserLink()">rawz</button>-->
 
 
 
@@ -17,57 +18,42 @@ Enter Link: <input type="text" name="userInput">
 
 <button onclick="shoot()" style="width: 64px;border: solid 2px #ccc;">Capture</button><br/>
 
-<div id="output" style="display: inline-block; top: 4px; position: relative ;border: dotted 1px #ccc; padding: 2px;"></div>
-
-
-
-
-<!-- <script src="dbz.js"></script> -->
+<div id="output" style="display: inline-block; top: 4px; position: relative ;border: dotted 1px #ccc; padding: 2px;">
+</div>
 
 </body>
+
 <style>
-
-body {
-text-align: center;
-}
-
-
-#c {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-}
-
-#v {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin: -180px 0 0 -240px;
-}
+    body {
+    text-align: center;
+    }
+    /*#output {
+    display: inline-block;
+    top: 4px;
+    position: relative;
+    border: dotted 1px #ccc;
+    padding: 2px;
+    }*/
 </style>
 
 
 <!-- function is converting youtube url to embedded video player using javascript and mp4 download website  -->
 <script>
 
-console.clear();
-var youtubeLink;
-var vidID;
+    // console.clear();
+    var youtubeLink;
+    var vidID;
 
-var video = document.getElementById('video');
-var source = document.createElement('source');
+    var video = document.getElementById('video');
+    var source = document.createElement('source');
 
-function getUserLink() {
+    function getUserLink() {
     var x;
-    x = document.getElementById("form1");
-    youtubeLink = x.elements["userInput"].value;
+        x = document.getElementById("form1");
+        youtubeLink = x.elements["userInput"].value;
 
 
-    var mp4url = "http://www.youtubeinmp4.com/redirect.php?video=";
+        var mp4url = "http://www.youtubeinmp4.com/redirect.php?video=";
 
 
 
@@ -80,31 +66,23 @@ function getUserLink() {
            vidID = id;
         }
 
-
-//    document.write(mp4url + youtubeLink);
-//    var newVid = mp4url+youtubeLink;
-
-
-//
-    source.setAttribute('src', mp4url+vidID);
-    video.appendChild(source);
-    video.load();
+    //    document.write(mp4url + youtubeLink);
+    //    var newVid = mp4url+youtubeLink;
 
 
+    //
+        source.setAttribute('src', mp4url+vidID);
+        video.appendChild(source);
+        video.load();
 
-
-
-
-} //END getUserLink()
+    } //END getUserLink()
 
 </script>
 
 
 <script>
 
-var videoId = 'video';
-var scaleFactor = 0.5;
-var snapshots = [];
+
 
 /**
  * Captures a image frame from the provided video element.
@@ -114,7 +92,14 @@ var snapshots = [];
  *
  * @return {Canvas}
  */
-function capture(video, scaleFactor) {
+
+
+    var videoId = 'video';
+    var scaleFactor = 0.5;
+    var snapshots = [];
+
+
+    function capture(video, scaleFactor) {
     if(scaleFactor == null){
         scaleFactor = 1;
     }
@@ -123,27 +108,50 @@ function capture(video, scaleFactor) {
     var canvas = document.createElement('canvas');
         canvas.width  = w;
         canvas.height = h;
+
     var ctx = canvas.getContext('2d');
         ctx.drawImage(video, 0, 0, w, h);
+
+
+        // var canvas 2
+        var canvas2 = document.createElement('canvas');
+        canvas2.width  = w * 2;
+        canvas2.height = h * 2;
+
+        // var ctx2 = canvas.getContext('2d');
+        // ctx2.drawImage(video, 0 ,0, 2, h);
+
     return canvas;
 }
+
+// captures an image frame from video
 
 /**
  * Invokes the <code>capture</code> function and attaches the canvas element to the DOM.
  */
-function shoot(){
+
+ //snapshots is an array of canvas elements
+    function shoot(){
     var video  = document.getElementById(videoId);
     var output = document.getElementById('output');
     var canvas = capture(video, scaleFactor);
-    //     canvas.onclick = function(){
-    //         window.open(this.toDataURL());
-    //     };
+    canvas.onclick = function(){
+        console.log(canvas2)
+        // console.log(canvas);
+            // window.open(this.toDataURL())
+        };
     snapshots.unshift(canvas);
+    // canvas.onclick = capture()
     output.innerHTML = '';
     for(var i=0; i<4; i++){
         output.appendChild(snapshots[i]);
     }
 }
 
+// puts image frame into delegated canvas
 
 </script>
+
+
+
+
