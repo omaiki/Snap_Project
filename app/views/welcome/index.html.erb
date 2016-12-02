@@ -39,21 +39,48 @@
 
 <!-- function is converting youtube url to embedded video player using javascript and mp4 download website  -->
 <script>
+$(function() {
 
-    // console.clear();
-    var youtubeLink;
-    var vidID;
 
-    var video = document.getElementById('video');
-    var source = document.createElement('source');
+    $('#video').on('click', function() {
+        console.log('videoClicked');
 
-    function getUserLink() {
+    });
+
+
+
+
+
+});
+
+
+function convertCanvasToImage(canvas) {
+    var image = new Image();
+    image.src = canvas.toDataURL("image/png");
+        image.setAttribute('crossOrigin', 'anonymous');
+
+    return image;
+}
+
+
+
+
+// START get youtube video function?
+
+var youtubeLink;
+var vidID;
+
+var video = document.getElementById('video');
+var source = document.createElement('source');
+
+function getUserLink() {
     var x;
-        x = document.getElementById("form1");
-        youtubeLink = x.elements["userInput"].value;
+    x = document.getElementById("form1");
+    youtubeLink = x.elements["userInput"].value;
 
 
-        var mp4url = "http://www.youtubeinmp4.com/redirect.php?video=";
+    var mp4url = "http://www.youtubeinmp4.com/redirect.php?video=";
+    var mp4urlHDending = "&hd=1";
 
 
 
@@ -66,89 +93,163 @@
            vidID = id;
         }
 
-    //    document.write(mp4url + youtubeLink);
-    //    var newVid = mp4url+youtubeLink;
+
+//    document.write(mp4url + youtubeLink);
+//    var newVid = mp4url+youtubeLink;
 
 
-    //
-        source.setAttribute('src', mp4url+vidID);
-        video.appendChild(source);
-        video.load();
-
-    } //END getUserLink()
-
-</script>
-
-
-<script>
+//
+    source.setAttribute('src', mp4url+vidID+mp4urlHDending);
+    video.appendChild(source);
+    video.load();
 
 
 
-/**
- * Captures a image frame from the provided video element.
- *
- * @param {Video} video HTML5 video element from where the image frame will be captured.
- * @param {Number} scaleFactor Factor to scale the canvas element that will be return. This is an optional parameter.
- *
- * @return {Canvas}
- */
 
 
-    var videoId = 'video';
-    var scaleFactor = 0.5;
-    var snapshots = [];
+
+} //END getUserLink()
 
 
-    function capture(video, scaleFactor) {
+
+// END get youtube video function?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var videoId = 'video';
+var scaleFactor = 0.25;
+var snapshots = [];
+
+
+function capture(video, scaleFactor) {
     if(scaleFactor == null){
         scaleFactor = 1;
     }
     var w = video.videoWidth * scaleFactor;
     var h = video.videoHeight * scaleFactor;
+
+
     var canvas = document.createElement('canvas');
         canvas.width  = w;
         canvas.height = h;
-
     var ctx = canvas.getContext('2d');
         ctx.drawImage(video, 0, 0, w, h);
 
 
-        // var canvas 2
-        var canvas2 = document.createElement('canvas');
-        canvas2.width  = w * 2;
-        canvas2.height = h * 2;
 
-        // var ctx2 = canvas.getContext('2d');
-        // ctx2.drawImage(video, 0 ,0, 2, h);
+
+    canvas.id = 'canvas';
+//    canvas.setAttribute('class', 'myCanvasClass');
+
+//    canvas.addEventListener('click', function() {
+//
+//
+//
+////        document.getElementById('canvas').style.transform = "scale(2,2)";
+//    });
+
+
+
+
+
 
     return canvas;
 }
 
-// captures an image frame from video
 
-/**
- * Invokes the <code>capture</code> function and attaches the canvas element to the DOM.
- */
+function scaleCapture(video) {
 
- //snapshots is an array of canvas elements
-    function shoot(){
+    var canvas2 = document.createElement('canvas');
+
+    canvas2.width  = video.videoWidth;
+    canvas2.height = video.videoHeight;
+
+    var scaleW = canvas2.width;
+    var scaleH = canvas2.height;
+
+    var ctx2 = canvas2.getContext('2d');
+        ctx2.drawImage(video, 0, 0, scaleW, scaleH);
+    canvas2.id = 'canvas2';
+
+        return canvas2;
+
+}
+
+
+function dismiss() {
+    console.log('dismissCalled');
+    $('#light').css('display','none');
+    $('#fade').css('display','none');
+    $('#canvas2').remove();
+}
+
+
+// append screenshot to screen and display in a list
+function shoot() {
     var video  = document.getElementById(videoId);
     var output = document.getElementById('output');
     var canvas = capture(video, scaleFactor);
-    canvas.onclick = function(){
-        console.log(canvas2)
-        // console.log(canvas);
-            // window.open(this.toDataURL())
-        };
+
+    //START
+    var scaleCanvas = scaleCapture(video);
+
+    //END
+
+//    var myImage = convertCanvasToImage(canvas);
+
+//    snapshots.unshift(myImage);
     snapshots.unshift(canvas);
-    // canvas.onclick = capture()
     output.innerHTML = '';
     for(var i=0; i<4; i++){
-        output.appendChild(snapshots[i]);
-    }
-}
 
-// puts image frame into delegated canvas
+        output.appendChild(snapshots[i]);
+//        light.appendChild(snapshots[i]);
+
+//        $('.myCanvasClass').on('click', function() {
+//            console.log('canvasClicked');
+//            $('.myCanvasClass').toggle();
+//            $('.myCanvasClass').css({
+////                'padding-top':'100px'
+////                'position':'fixed',
+////                'top':'50%',
+////                'left':'50%',
+////                'transform':'translate(-50%,-50%)'
+//
+//            });
+//        });
+
+
+
+    $('#canvas').on('click', function() {
+        console.log('canvasClicked');
+        $('#canvas2').addClass('.white_content');
+        // make canvas bigger
+//      // $('#canvas').css('transform','scale(3,3)');
+        light.appendChild(scaleCanvas);
+        $('#light').css('display','block');
+        $('#fade').css('display','block');
+    }); // END CANVAS ONCLICK()
+
+
+    } // END FOR LOOP()
+
+
+
+
+
+
+} // END FUNCTION SHOOT()
 
 </script>
 
