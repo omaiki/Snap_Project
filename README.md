@@ -28,7 +28,11 @@ screenshot click --> reset to video
 
 ### CURRENTLY WORKING ON:
 
-* >>> Adding OAuth 2.0 for gmail sign-in and functionality to quickly email screenshots to personal e-mail
+
+* >>> User is able to size images to their preference
+
+*  Adding OAuth 2.0 for gmail sign-in and functionality to quickly email screenshots to personal e-mail
+
 
 * Transition website service into a chrome extension to use on any page
 
