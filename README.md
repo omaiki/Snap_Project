@@ -8,9 +8,15 @@ Stream Capture allows users to get clear screenshots and thumbnails from any You
 
 #### Retrieve video with a Youtube URL
 
+link --> video play
+
 #### Capture screenshots/thumbnails
 
+capture button --> screenshots
+
 #### Detailed overlay of screenshot for closer examination
+
+screenshot click --> reset to video
 
 ### TECH STACK:
 
