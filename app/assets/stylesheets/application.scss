@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+/*
+ #import bootstrap styles*/
+
+ @import "bootstrap-sprockets";
+ @import "bootswatch/spacelab/variables";
+ @import "bootstrap";
+ @import "bootswatch/spacelab/bootswatch";

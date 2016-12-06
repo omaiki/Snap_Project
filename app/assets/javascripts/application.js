@@ -13,83 +13,85 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require bootstrap-sprockets
 //= require_tree .
 
 
-$(function() {
+
+// $(function() {
 
 
-    $('#video').on('click', function() {
-        console.log('videoClicked');
+//     $('#video').on('click', function() {
+//         console.log('videoClicked');
 
-    });
-
-
-
-
-
-});
-
-
-function convertCanvasToImage(canvas) {
-  var image = new Image();
-  image.src = canvas.toDataURL("image/png");
-        image.setAttribute('crossOrigin', 'anonymous');
-
-  return image;
-}
-
-
-
-
-// START get youtube video function?
-
-var youtubeLink;
-var vidID;
-
-var video = document.getElementById('video');
-var source = document.createElement('source');
-
-function getUserLink() {
-    var x;
-    x = document.getElementById("form1");
-    youtubeLink = x.elements["userInput"].value;
-
-
-    var mp4url = "http://www.youtubeinmp4.com/redirect.php?video=";
-    var mp4urlHDending = "&hd=1";
-
-
-
-       var isYoutube = youtubeLink && youtubeLink.match(/(?:youtu|youtube)(?:\.com|\.be)\/([\w\W]+)/i);
-
-       if (isYoutube) {
-           var id = isYoutube[1].match(/watch\?v=|[\w\W]+/gi);
-           id = (id.length > 1) ? id.splice(1) : id;
-           id = id.toString();
-           vidID = id;
-        }
-
-
-//    document.write(mp4url + youtubeLink);
-//    var newVid = mp4url+youtubeLink;
-
-
-//
-    source.setAttribute('src', mp4url+vidID+mp4urlHDending);
-    video.appendChild(source);
-    video.load();
+//     });
 
 
 
 
 
-
-} //END getUserLink()
-
+// });
 
 
-// END get youtube video function?
+// function convertCanvasToImage(canvas) {
+//   var image = new Image();
+//   image.src = canvas.toDataURL("image/png");
+//         image.setAttribute('crossOrigin', 'anonymous');
+
+//   return image;
+// }
+
+
+
+
+// // START get youtube video function?
+
+// var youtubeLink;
+// var vidID;
+
+// var video = document.getElementById('video');
+// var source = document.createElement('source');
+
+// function getUserLink() {
+//     var x;
+//     x = document.getElementById("form1");
+//     youtubeLink = x.elements["userInput"].value;
+
+
+//     var mp4url = "http://www.youtubeinmp4.com/redirect.php?video=";
+//     var mp4urlHDending = "&hd=1";
+
+
+
+//        var isYoutube = youtubeLink && youtubeLink.match(/(?:youtu|youtube)(?:\.com|\.be)\/([\w\W]+)/i);
+
+//        if (isYoutube) {
+//            var id = isYoutube[1].match(/watch\?v=|[\w\W]+/gi);
+//            id = (id.length > 1) ? id.splice(1) : id;
+//            id = id.toString();
+//            vidID = id;
+//         }
+
+
+// //    document.write(mp4url + youtubeLink);
+// //    var newVid = mp4url+youtubeLink;
+
+
+// //
+//     source.setAttribute('src', mp4url+vidID+mp4urlHDending);
+//     video.appendChild(source);
+//     video.load();
+
+
+
+
+
+
+// } //END getUserLink()
+
+
+
+// // END get youtube video function?
 
 
 

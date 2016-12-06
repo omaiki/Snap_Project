@@ -1,24 +1,43 @@
-# README
+# STREAM CAPTURE
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### HOW IT WORKS:
 
-Things you may want to cover:
+Stream Capture allows users to get clear screenshots and thumbnails from any Youtube video URL
 
-* Ruby version
+### SCREENSHOTS:
 
-* System dependencies
+#### Retrieve video with a Youtube URL
 
-* Configuration
+link --> video play
 
-* Database creation
+#### Capture screenshots/thumbnails
 
-* Database initialization
+capture button --> screenshots
 
-* How to run the test suite
+#### Detailed overlay of screenshot for closer examination
 
-* Services (job queues, cache servers, search engines, etc.)
+screenshot click --> reset to video
 
-* Deployment instructions
+### TECH STACK:
 
-* ...
+* Ruby on Rails
+* PostgreSQL
+* Javascript with HTML <canvas>
+* jQuery
+
+
+### CURRENTLY WORKING ON:
+
+
+* >>> User is able to size images to their preference
+
+*  Adding OAuth 2.0 for gmail sign-in and functionality to quickly email screenshots to personal e-mail
+
+
+* Transition website service into a chrome extension to use on any page
+
+
+### TEAM:
+
+* [Oshoke Maiki](https://github.com/omaiki) - oshokemaiki@gmail.com
+* [Raul Cano](https://github.com/RMC1) - raulcano.one@gmail.com
