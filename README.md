@@ -31,7 +31,7 @@ Stream Capture allows users to get clear screenshots and thumbnails from any You
 ### CURRENTLY WORKING ON:
 
 
-* >>> User is able to size images to their preference
+* >>> Sizing images based on user preference
 
 *  Adding OAuth 2.0 for gmail sign-in and functionality to quickly email screenshots to personal e-mail
 
