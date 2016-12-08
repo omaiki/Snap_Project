@@ -24,7 +24,7 @@ Stream Capture allows users to get clear screenshots and thumbnails from any You
 
 * Ruby on Rails
 * PostgreSQL
-* Javascript with HTML "<canvas>"
+* Javascript with HTML canvas
 * jQuery
 
 
