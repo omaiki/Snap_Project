@@ -8,15 +8,17 @@ Stream Capture allows users to get clear screenshots and thumbnails from any You
 
 #### Retrieve video with a Youtube URL
 
-link --> video play
+![Screenshots](/public/urlpic.png?raw=true "URL pic")
 
 #### Capture screenshots/thumbnails
 
-capture button --> screenshots
+![Screenshots](/public/streamcapture2.png?raw=true "Stream Capture")
 
-#### Detailed overlay of screenshot for closer examination
+#### Closer look at selected image
 
-screenshot click --> reset to video
+![Screenshots](/public/overlay.png?raw=true "Overlay")
+
+
 
 ### TECH STACK:
 
@@ -29,7 +31,7 @@ screenshot click --> reset to video
 ### CURRENTLY WORKING ON:
 
 
-* >>> User is able to size images to their preference
+* >>> Sizing images based on user preference
 
 *  Adding OAuth 2.0 for gmail sign-in and functionality to quickly email screenshots to personal e-mail
 
