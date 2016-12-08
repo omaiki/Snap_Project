@@ -8,12 +8,16 @@ Stream Capture allows users to get clear screenshots and thumbnails from any You
 
 #### Retrieve video with a Youtube URL
 
-(/public/StreamCaptureShot2.gif "URL to Video Conversion")
-
+![Screenshots](/relative/path/to/urlpic.png?raw=true "URL pic")
 
 #### Capture screenshots/thumbnails
 
-(/public/StreamCaptureShot3.gif "Capture screenshots")
+![Screenshots](/relative/path/to/streamcapture.png?raw=true "Stream Capture")
+
+#### Closer look at selected image
+
+![Screenshots](/relative/path/to/overlay.png?raw=true "Overlay")
+
 
 
 ### TECH STACK:
