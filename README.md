@@ -12,7 +12,7 @@ Stream Capture allows users to get clear screenshots and thumbnails from any You
 
 #### Capture screenshots/thumbnails
 
-![Screenshots](/public/streamcapture.png?raw=true "Stream Capture")
+![Screenshots](/public/streamcapture2.png?raw=true "Stream Capture")
 
 #### Closer look at selected image
 
